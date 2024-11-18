@@ -1,11 +1,12 @@
 'use client';
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { getBestsellerCategories } from "./aggregates/nytimes-api/nytimes-api";
-import SearchBar from "./components/search-bar";
 
 export default function Home() {
   const [categories, setCategories] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const [filteredCategories, setFilteredCategories] = useState([]);
 
   useEffect(() => {
@@ -17,14 +18,23 @@ export default function Home() {
     fetchCategories();
   }, []);
 
-  const handleSearch = (filtered) => {
+  useEffect(() => {
+    const filtered = categories.filter(category =>
+      category.display_name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
     setFilteredCategories(filtered);
-  };
+  }, [searchQuery, categories]);
 
   return (
     <div className="px-6 py-20 container mx-auto">
       <h1 className="text-center mb-8 text-4xl font-bold">{categories.length} book categories</h1>
-      <SearchBar categories={categories} onSearch={handleSearch} />
+      <input
+        type="text"
+        placeholder="Search categories..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="mb-8 p-2 border border-neutral-800 rounded-lg w-full"
+      />
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {filteredCategories.map((category) => (
           <Link href={`/books/${category.list_name_encoded}`} key={category.list_name_encoded} className="p-4 border border-neutral-800 rounded-lg hover:bg-customColorGrey transition">

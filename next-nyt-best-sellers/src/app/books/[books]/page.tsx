@@ -56,9 +56,11 @@ export default async function Books({ params }){
                                 <p className='text-neutral-400 text-sm leading-6 text-center'>{book.description}</p>
                             ) : null}
                             <div className='text-center'>
-                                <button className={`mt-4 px-4 py-2 text-white rounded-lg hover:bg-opacity-80 transition-colors duration-300 ${index < 3 ? getMedalBorderColor(index).split(' ')[1] : 'bg-[#207F89]'}`}>
-                                    Buy on Amazon
-                                </button>
+                                <a href={book.buy_links[0].url} target="_blank" rel="noopener noreferrer">
+                                    <button className={`mt-4 px-4 py-2 text-white rounded-lg hover:bg-opacity-80 transition-colors duration-300 ${index < 3 ? getMedalBorderColor(index).split(' ')[1] : 'bg-[#207F89]'}`}>
+                                        Buy on Amazon
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </article>

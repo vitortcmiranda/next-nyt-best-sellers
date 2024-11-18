@@ -26,7 +26,7 @@ export default function Home() {
     fetchCategories();
 
     return () => {
-      isMounted = false; // Clean up function to avoid memory leaks
+      isMounted = false;
     };
   }, []);
 

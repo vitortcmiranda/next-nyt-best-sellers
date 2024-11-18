@@ -53,6 +53,7 @@ export const incrementNytApiCallCount = async ():Promise<number> => {
     const result = cachedData as number;
 
     if(result >=150) {
+        console.log('You have reached the limit of NYT API calls');
         throw new Error('You have reached the limit of NYT API calls');
     }
 

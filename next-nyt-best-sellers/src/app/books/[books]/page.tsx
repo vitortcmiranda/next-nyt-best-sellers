@@ -11,7 +11,7 @@ export default async function Books({ params }){
     <div className="px-6 py-20 container mx-auto">
         <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
             {booksByCategory.books && booksByCategory.books.map((book) => (
-                <article key={book.description} className='border border-neutral-800 rounded-lg hover:bg-neutral-900'>
+                <article key={book.description} className='border border-neutral-800 rounded-lg hover:bg-customColorGrey'>
                     <Image src={book.book_image} alt={book.title} width={400} height={600} className="w-full object-cover rounded-t-lg" />
                     <div className='p-4 space-y-4'>
                         <h2 className='font-bold text-center'>

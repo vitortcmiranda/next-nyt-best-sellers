@@ -5,6 +5,7 @@ import BestsellerCategoriesResponse from '@/app/aggregates/nytimes-api/nytimes-a
 export default async function Books({ params }) {
     const { books } = await params;
     const booksByCategory: BestsellerCategoriesResponse = await getBooksByCategory(books);
+    console.log("o que ta chegando : ", booksByCategory);
     const getMedalIcon = (index) => {
         switch(index) {
             case 0:

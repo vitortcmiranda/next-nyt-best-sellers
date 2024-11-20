@@ -14,7 +14,7 @@ export const getBooksCategoryCacheByKey = async (key: string): Promise<Bestselle
 
     const cachedData =  await redis.get(key);
 
-    return cachedData as BestsellerCategoriesResponse[];
+    return cachedData as unknown as BestsellerCategoriesResponse[];
  
 };
 
@@ -27,7 +27,7 @@ export const getBooksByCategoryCache = async (key: string): Promise<string> => {
 
     const cachedData =  await redis.get(key);
 
-    return cachedData as string;
+    return cachedData as unknown as string;
  
 };
 
@@ -50,7 +50,7 @@ export const incrementNytApiCallCount = async ():Promise<number> => {
     });
 
     const cachedData =  await redis.get(key);
-    const result = cachedData as number;
+    const result = cachedData as unknown as number;
 
     if(result >=150) {
         console.log('You have reached the limit of NYT API calls');

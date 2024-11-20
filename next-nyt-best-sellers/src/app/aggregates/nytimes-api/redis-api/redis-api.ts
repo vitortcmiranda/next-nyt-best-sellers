@@ -59,7 +59,7 @@ export const incrementNytApiCallCount = async ():Promise<number> => {
 
     if (cachedData) {
         console.log('Incrementing nyt api call count', cachedData);
-        const count = parseInt(cachedData);
+        const count = parseInt(cachedData as unknown as string);
         const newCount = count + 1;
         await redis.set(key, newCount.toString());
         return newCount;

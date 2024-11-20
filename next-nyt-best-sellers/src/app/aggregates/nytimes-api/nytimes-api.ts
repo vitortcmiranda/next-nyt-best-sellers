@@ -30,7 +30,7 @@ export const getBooksByCategory = async (category: string): Promise<BestsellerCa
 
   if(cachedData) {
     console.log(`Returning cached data for getting books for category: ${category}`);
-    return cachedData as BestsellerCategoriesResponse;
+    return cachedData as unknown as BestsellerCategoriesResponse;
   }
 
   const apiCallsNumber = await incrementNytApiCallCount();

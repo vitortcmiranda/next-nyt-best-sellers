@@ -67,7 +67,8 @@ Open http://localhost:3000 with your browser to see the result.
 
 
 ## File Structure
-text
+
+```
 ├──/src
 │   ├──/app
 │   │   ├──/aggregates
@@ -83,6 +84,7 @@ text
 ├── package.json
 ├── README.md
 └── tsconfig.json
+```
 
 ## Acknowledgements
 - New York Times Books API for providing the data.
